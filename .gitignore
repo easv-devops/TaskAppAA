@@ -1,0 +1,5 @@
+bin
+obj
+.idea
+TaskAppAA.sln.DotSettings.user
+node_modules
