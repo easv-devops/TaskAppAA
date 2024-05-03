@@ -18,7 +18,7 @@ public class TaskRepository
         using var connection = GetConnection();
 
         string sql = $@"
-INSERT INTO db.tasks (task_name) 
+INSERT INTO task_app.tasks (task_name) 
 VALUES (@taskName)
 RETURNING 
    task_id as {nameof(Task.TaskId)},
@@ -32,9 +32,10 @@ RETURNING
     {
         string sql = $@"
 SELECT 
+    task_id as {nameof(Task.TaskId)},
   task_name as {nameof(Task.TaskName)}
 
-FROM db.tasks;
+FROM task_app.tasks;
 ";
         using var connection = GetConnection();
         return connection.Query<Task>(sql);
@@ -46,7 +47,7 @@ FROM db.tasks;
         using var connection = GetConnection();
 
         string sql = @"
-        DELETE FROM db.tasks
+        DELETE FROM task_app.tasks
         WHERE task_id = @taskId;
     ";
 
