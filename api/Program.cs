@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<TaskService>();
-builder.Services.AddSingleton<TaskRepository>();
+builder.Services.AddSingleton<ITaskRepository,TaskRepository>();
 
 var app = builder.Build();
 
