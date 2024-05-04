@@ -3,7 +3,7 @@ using MySqlConnector;
 
 namespace infrastructure;
 
-public class TaskRepository
+public class TaskRepository:ITaskRepository
 {
     private static MySqlConnection GetConnection()
     {
