@@ -54,6 +54,7 @@ export class HomePage {
       toast.present();
     }
   }
+  
   async createTask() {
     const modal = await this.modalController.create({
       component: CreateTaskComponent
