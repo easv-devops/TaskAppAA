@@ -18,13 +18,13 @@ export class HomePage {
   }
 
   async getTasks() {
-    const call = this.http.get<Task[]>('http://localhost:5087/api/tasks');
+    const call = this.http.get<Task[]>('http://5.189.170.247:5002/api/tasks');
     this.dataService.tasks = await firstValueFrom<Task[]>(call);
   }
 
   async deleteTask(taskId: number | undefined) {
     try {
-      await firstValueFrom(this.http.delete<Task>('http://localhost:5087/api/tasks/' + taskId))
+      await firstValueFrom(this.http.delete<Task>('http://5.189.170.247:5002/api/tasks/' + taskId))
       this.dataService.tasks = this.dataService.tasks.filter(a => a.taskId != taskId)
 
       const toast = await this.toastController.create({
@@ -54,7 +54,7 @@ export class HomePage {
       toast.present();
     }
   }
-  
+
   async createTask() {
     const modal = await this.modalController.create({
       component: CreateTaskComponent

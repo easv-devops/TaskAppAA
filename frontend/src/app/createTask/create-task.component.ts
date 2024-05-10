@@ -21,7 +21,7 @@ export class CreateTaskComponent {
 
   async createNewTask() {
     try {
-      const observable = this.http.post<Task>('http://localhost:5087/api/task', this.createNewTaskForm.getRawValue());
+      const observable = this.http.post<Task>('http://5.189.170.247:5002/api/task', this.createNewTaskForm.getRawValue());
       const response = await firstValueFrom<Task>(observable);
       this.dataService.tasks.push(response);
 
