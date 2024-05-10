@@ -70,3 +70,12 @@ steps:
       repo: aleksandramk/taskapp-web
       tags:
         - latest
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl --fail -X GET 'http://5.189.170.247:8080/v1/update' -H 'Authorization: Bearer mytoken'"
+      - sleep 10
+    depends_on:
+      - publish api
+      - publish web
