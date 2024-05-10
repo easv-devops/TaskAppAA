@@ -10,14 +10,14 @@ steps:
       - dotnet build
 
 
-  #- name: test
-  #  image: mcr.microsoft.com/dotnet/sdk
-  #  environment:
-  #    sqlconn:
-  #      from_secret: sqlconn
-  #  commands:
-  #    - cd tests
-  #    - dotnet test
+  - name: test
+    image: mcr.microsoft.com/dotnet/sdk
+    environment:
+      sqlconn:
+        from_secret: sqlconn
+    commands:
+      - cd tests
+      - dotnet test
 
 
 

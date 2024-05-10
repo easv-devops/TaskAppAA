@@ -3,10 +3,10 @@
 public static class Utilities
 {
     private static readonly string EnvironmentVariableName = "sqlconn";
-    private const string DefaultServer = "localhost";
+    //private const string DefaultServer = "localhost";
 
     public static string BuildConnectionString(
-        string server = DefaultServer,
+        string server = "",
         string database = "",
         string user = "",
         string password = ""
