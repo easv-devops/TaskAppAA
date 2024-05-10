@@ -1,6 +1,6 @@
 ﻿namespace infrastructure;
 
-public class Utilities
+public static class Utilities
 {
     private static readonly string EnvironmentVariableName = "sqlconn";
     private const string DefaultServer = "localhost";

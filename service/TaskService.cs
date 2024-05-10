@@ -5,9 +5,10 @@ namespace service;
 
 public class TaskService
 {
-    private readonly TaskRepository _taskRepository;
+    private readonly ITaskRepository _taskRepository;
+    
 
-    public TaskService(TaskRepository taskRepository)
+    public TaskService(ITaskRepository taskRepository)
     {
         _taskRepository = taskRepository;
     }
