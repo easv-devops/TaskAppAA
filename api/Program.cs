@@ -22,12 +22,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(options =>
+app.UseCors(builder =>
 {
-    options.SetIsOriginAllowed(origin => true)
+    builder
+        .AllowAnyOrigin()
         .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
+        .AllowAnyHeader();
 });
 
 
