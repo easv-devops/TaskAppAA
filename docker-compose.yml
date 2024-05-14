@@ -13,7 +13,7 @@
     ports:
       - "5002:8080"
     environment:
-      - sqlconn=Server=localhost;Database=task_app;Uid=myuser;Pwd=mypassword;
+      - sqlconn=Server=5.189.170.247:3306;Database=task_app;Uid=myuser;Pwd=mypassword;
     depends_on:
       - mariadb
     labels:
