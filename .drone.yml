@@ -84,9 +84,9 @@ steps:
     image: flyway/flyway
     commands:
       - flyway migrate
-      - -url=jdbc:mariadb://5.189.170.247:3306/task_app
-      - -user=myuser
-      - -password=mypassword
-      - -locations=filesystem:./db/sql
+      - url=jdbc:mariadb://5.189.170.247:3306/task_app
+      - user=myuser
+      - password=mypassword
+      - locations=filesystem:./db/sql
     depends_on:
       - trigger update

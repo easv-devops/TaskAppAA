@@ -23,11 +23,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(builder =>
+
 {
+
     builder
-        .WithOrigins("http://5.189.170.247:5001")
+
+        .AllowAnyOrigin()
+
         .AllowAnyMethod()
+
         .AllowAnyHeader();
+
 });
 
 
