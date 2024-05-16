@@ -101,7 +101,7 @@ steps:
   - name: e2e tests
     image: testcafe/testcafe
     commands:
-      - testcafe chromium:headless tests/e2e.js
+      - testcafe chromium:headless tests/e2e.js --disable-native-automation
     depends_on:
       - update database
 
