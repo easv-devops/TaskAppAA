@@ -1,0 +1,7 @@
+﻿services:
+  task-app-frontend:
+    image: aleksandramk/taskapp-web:prod
+    
+  task-app-backend:
+    image: aleksandramk/taskapp-api:prod
+    
