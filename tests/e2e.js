@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-fixture("Tests").page("http://http://5.189.170.247:5001/home");
+fixture("Tests").page("http://5.189.170.247:5001/home");
 test("Create Task Test", async (t) => {
     await t.click("#addTask");
     await t.wait(1000);
