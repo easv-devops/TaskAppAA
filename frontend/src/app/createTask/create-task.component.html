@@ -2,8 +2,8 @@
   <ion-list>
     <ion-item>
       <ion-label>Task name</ion-label>
-      <ion-input [formControl]="createNewTaskForm.controls.taskName" placeholder="Task name"></ion-input>
+      <ion-input id="taskName" [formControl]="createNewTaskForm.controls.taskName" placeholder="Task name"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-button (click)="createNewTask()" [disabled]="createNewTaskForm.invalid">Create task</ion-button>
+  <ion-button id="createTask" (click)="createNewTask()" [disabled]="createNewTaskForm.invalid">Create task</ion-button>
 </ion-content>

@@ -15,16 +15,16 @@
         <ion-card>
           <ion-card-header>
 
-            <ion-card-title>{{task.taskName}}</ion-card-title>
+            <ion-card-title id="taskNameInCol">{{task.taskName}}</ion-card-title>
           </ion-card-header>
-          <ion-button fill="clear" (click)="deleteTask(task.taskId)">Delete</ion-button>
+          <ion-button id="deleteTask" fill="clear" (click)="deleteTask(task.taskId)">Delete</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button (click)="createTask()">
+  <ion-fab-button id="addTask" (click)="createTask()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

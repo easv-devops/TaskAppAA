@@ -70,7 +70,7 @@ steps:
       repo: aleksandramk/taskapp-web
       tags:
         - latest
-          
+
   - name: trigger update
     image: curlimages/curl
     commands:
@@ -159,3 +159,18 @@ steps:
         -locations=filesystem:./db/sql
     depends_on:
       - trigger update
+
+  - name: e2e tests
+    image: testcafe/testcafe
+    commands:
+      - testcafe chromium:headless tests/e2e.js
+    depends_on:
+      - update database
+
+  - name: performance tests
+    image: grafana/k6
+    commands:
+      - k6 run tests/performance/load_test.js
+      - k6 run tests/performance/spike_test.js
+    depends_on:
+      - update database
