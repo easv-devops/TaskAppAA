@@ -97,3 +97,65 @@ steps:
         -locations=filesystem:./db/sql
     depends_on:
       - trigger update
+
+
+---
+
+kind: pipeline
+type: docker
+name: deploy
+depends_on:
+  - deliver
+
+steps:
+  - name: release api
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      dockerfile: api/Dockerfile
+      repo: aleksandramk/taskapp-api
+      tags:
+        - prod
+
+  - name: release web
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: frontend
+      dockerfile: frontend/Dockerfile
+      repo: aleksandramk/taskapp-web
+      tags:
+        - prod
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl --fail -X GET 'http://5.189.171.183:8080/v1/update' -H 'Authorization: Bearer mytoken'" # Must match the token defined in docker-compose.yml
+      - sleep 10
+    depends_on:
+      - release api
+      - release web
+
+  - name: update database
+    image: flyway/flyway
+    environment:
+      DB_URL:
+        from_secret: DBUrlProd
+      DB_USER:
+        from_secret: DBUser
+      DB_PASSWORD:
+        from_secret: DBPassword
+    commands:
+      - flyway migrate
+        -url="$DB_URL"
+        -user="$DB_USER"
+        -password="$DB_PASSWORD"
+        -locations=filesystem:./db/sql
+    depends_on:
+      - trigger update
