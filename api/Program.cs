@@ -1,4 +1,5 @@
 using infrastructure;
+using monitoring;
 using service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<TaskService>();
 builder.Services.AddSingleton<ITaskRepository,TaskRepository>();
+builder.Services.AddSingleton<MonitorService>();
 
 var app = builder.Build();
 
