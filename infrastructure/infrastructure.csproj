@@ -12,7 +12,7 @@
         <PackageReference Include="MySqlConnector" Version="2.3.5"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
 
-        <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
+        <ProjectReference Include="..\monitoring\monitoring.csproj" />
     </ItemGroup>
 
 
