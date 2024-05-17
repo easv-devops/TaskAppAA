@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using monitoring;
+using NUnit.Framework;
 using service;
 
 namespace tests;
@@ -10,7 +11,8 @@ public class UnitTests
     {
         //Arrange
         var mockRepository = new MockTaskRepository();
-        var taskService = new TaskService(mockRepository);
+        var monitorService = new MonitorService();
+        var taskService = new TaskService(mockRepository, monitorService);
 
         //Act
         var tasks = taskService.GetAllTasks();
@@ -27,7 +29,8 @@ public class UnitTests
     {
         //Arrange
         var mockRepository = new MockTaskRepository();
-        var taskService = new TaskService(mockRepository);
+        var monitorService = new MonitorService();
+        var taskService = new TaskService(mockRepository, monitorService);
 
         //Act
         string taskName = "create frontend";
@@ -45,7 +48,8 @@ public class UnitTests
     {
         //Arrange
         var mockRepository = new MockTaskRepository();
-        var taskService = new TaskService(mockRepository);
+        var monitorService = new MonitorService();
+        var taskService = new TaskService(mockRepository, monitorService);
 
         //Act
         taskService.DeleteTask(taskId:1);
