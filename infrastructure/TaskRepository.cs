@@ -23,6 +23,9 @@ public class TaskRepository:ITaskRepository
 
     public Task CreateTask(string taskName)
     {
+        _monitorService.Log.Information("Executing CreateTask query");
+        _monitorService.Log.Debug("Creating task: {TaskName}", taskName);
+      
         using var connection = GetConnection();
 
         string sql = $@"
@@ -33,8 +36,6 @@ RETURNING
     task_name as {nameof(Task.TaskName)};
     
 ";
-        _monitorService.Log.Information("Executing CreateTask query");
-        _monitorService.Log.Debug("Creating task: {TaskName}", taskName);
         return connection.QueryFirstOrDefault<Task>(sql, new { taskName });
     }
 
