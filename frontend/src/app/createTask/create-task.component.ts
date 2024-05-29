@@ -5,6 +5,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {DataService} from "../data.service";
 import {Task} from "../models"
 import {ModalController, ToastController} from "@ionic/angular";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-create-task',
@@ -21,7 +22,7 @@ export class CreateTaskComponent {
 
   async createNewTask() {
     try {
-      const observable = this.http.post<Task>('http://5.189.170.247:5002/api/task', this.createNewTaskForm.getRawValue());
+      const observable = this.http.post<Task>(environment.url + '/api/task', this.createNewTaskForm.getRawValue());
       const response = await firstValueFrom<Task>(observable);
       this.dataService.tasks.push(response);
       this.modalController.dismiss();

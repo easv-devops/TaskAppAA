@@ -5,6 +5,7 @@ import {firstValueFrom} from "rxjs";
 import {Task} from "../models";
 import {ModalController, ToastController} from "@ionic/angular";
 import {CreateTaskComponent} from "../createTask/create-task.component";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -18,13 +19,13 @@ export class HomePage {
   }
 
   async getTasks() {
-    const call = this.http.get<Task[]>('http://5.189.170.247:5002/api/tasks');
+    const call = this.http.get<Task[]>(environment.url + '/api/tasks');
     this.dataService.tasks = await firstValueFrom<Task[]>(call);
   }
 
   async deleteTask(taskId: number | undefined) {
     try {
-      await firstValueFrom(this.http.delete<Task>('http://5.189.170.247:5002/api/tasks/' + taskId))
+      await firstValueFrom(this.http.delete<Task>(environment.url + '/api/tasks/' + taskId))
       this.dataService.tasks = this.dataService.tasks.filter(a => a.taskId != taskId)
 
       const toast = await this.toastController.create({

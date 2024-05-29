@@ -35,6 +35,7 @@
             "scripts": []
           },
           "configurations": {
+
             "production": {
               "budgets": [
                 {
@@ -129,6 +130,9 @@
               "src/**/*.html"
             ]
           }
+        },
+        "cli": {
+          "analytics": false
         }
       }
     }

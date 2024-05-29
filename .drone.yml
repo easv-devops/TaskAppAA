@@ -142,7 +142,7 @@ steps:
       password:
         from_secret: DockerPassword
       context: frontend
-      dockerfile: frontend/Dockerfile
+      dockerfile: frontend/Prod/Dockerfile
       repo: aleksandramk/taskapp-web
       tags:
         - prod
